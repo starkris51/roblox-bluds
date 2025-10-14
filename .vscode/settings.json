@@ -1,5 +1,4 @@
 {
-	"typescript.tsdk": "node_modules/typescript/lib",
 	"files.eol": "\n",
 	"[typescript]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -11,5 +10,5 @@
 	},
 	"eslint.run": "onType",
 	"eslint.format.enable": true,
-	"stylua.targetReleaseVersion": "latest"
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

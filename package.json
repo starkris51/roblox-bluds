@@ -1,5 +1,5 @@
 {
-  "name": "bluds",
+  "name": "flamework-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,24 +10,23 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
-    "@rbxts/compiler-types": "^3.0.0-types.0",
-    "@rbxts/types": "^1.0.885",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
-    "@typescript-eslint/parser": "^8.46.0",
-    "eslint": "^9.37.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-roblox-ts": "^1.2.1",
-    "prettier": "^3.6.2",
-    "roblox-ts": "^3.0.0",
-    "typescript": "^5.9.3"
+    "@rbxts/compiler-types": "^2.3.0-types.1",
+    "@rbxts/types": "^1.0.777",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-roblox-ts": "^0.0.30",
+    "prettier": "^2.3.2",
+    "rbxts-transformer-flamework": "^1.2.2",
+    "roblox-ts": "^2.3.0",
+    "typescript": "~5.2.2"
   },
   "dependencies": {
-    "@rbxts/net": "^3.0.10",
-    "@rbxts/roact": "^3.0.1",
-    "@rbxts/services": "^1.5.5",
-    "@rbxts/t": "^3.2.1"
+    "@flamework/components": "^1.2.2",
+    "@flamework/core": "^1.2.2",
+    "@flamework/networking": "^1.2.2"
   }
 }

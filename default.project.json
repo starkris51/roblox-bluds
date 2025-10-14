@@ -1,5 +1,5 @@
 {
-	"name": "roblox-ts-game",
+	"name": "flamework-game",
 	"globIgnorePaths": [
 		"**/package.json",
 		"**/tsconfig.json"
@@ -20,6 +20,9 @@
 					"$className": "Folder",
 					"@rbxts": {
 						"$path": "node_modules/@rbxts"
+					},
+					"@flamework": {
+						"$path": "node_modules/@flamework"
 					}
 				}
 			},
@@ -39,8 +42,7 @@
 		"Workspace": {
 			"$className": "Workspace",
 			"$properties": {
-				"FilteringEnabled": true,
-				"StreamingEnabled": true
+				"FilteringEnabled": true
 			}
 		},
 		"HttpService": {

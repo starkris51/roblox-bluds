@@ -1,3 +1,4 @@
+import { Controller } from "@flamework/core";
 import { Players, RunService, UserInputService, Workspace } from "@rbxts/services";
 
 export enum CameraEffect {
@@ -10,6 +11,7 @@ export enum CameraEffect {
     Bobbing = "Bobbing",
 }
 
+@Controller()
 export class CameraController {
     private camera: Camera;
     private character?: Model;

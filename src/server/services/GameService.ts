@@ -1,15 +1,21 @@
+import { Service, OnStart } from "@flamework/core";
 import { RunService } from "@rbxts/services";
 import { GameConfig } from "shared/config/GameConfig";
 import { GamePhase, PlayerStatus } from "shared/enums/GameEnums";
 import { PlayerData } from "shared/types/PlayerTypes";
 
-export class GameService {
+@Service()
+export class GameService implements OnStart {
     private gameState: GamePhase = GamePhase.Lobby;
     private players = new Map<Player, PlayerData>();
     private gameLoop?: RBXScriptConnection;
 
     constructor() {
         // Initialize game service
+    }
+
+    onStart() {
+        print("server GameService started");
     }
 
     private addPlayer(player: Player) {

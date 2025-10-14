@@ -1,18 +1,19 @@
-import { Players, UserInputService } from "@rbxts/services";
+import { UserInputService } from "@rbxts/services";
 import { GameState } from "shared/types/GameTypes";
 import { PlayerData } from "shared/types/PlayerTypes";
-import { CameraController, CameraEffect } from "./camera";
+import { CameraController, CameraEffect } from "./CameraController";
+import { Controller } from "@flamework/core";
 
+@Controller()
 export class GameController {   
     private currentTarget?: Player;
     private playerData?: PlayerData;
     private gameState?: GameState;    
-    private cameraController: CameraController;
-    
-    constructor() {
+
+    constructor(private cameraController: CameraController) {
         this.setupRemotes();
         this.setupInput();
-        this.cameraController = new CameraController();
+        this.cameraController = cameraController;
 
         print("GameController initialized with first-person camera");
     }
