@@ -1,7 +1,9 @@
 # The Bluds (WIP)
 A Roblox Game 
 
-![Thumbnail](./The Bluds.jpg)
+![Thumbnail](The_Bluds.jpg)
+
+## Description
 
 Roblox game based on The Ship (2006) created with roblox-ts
 
