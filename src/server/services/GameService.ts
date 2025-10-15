@@ -1,5 +1,4 @@
 import { Service, OnStart } from "@flamework/core";
-import { RunService } from "@rbxts/services";
 import { GameConfig } from "shared/config/GameConfig";
 import { GamePhase, PlayerStatus } from "shared/enums/GameEnums";
 import { PlayerData } from "shared/types/PlayerTypes";
@@ -8,7 +7,6 @@ import { PlayerData } from "shared/types/PlayerTypes";
 export class GameService implements OnStart {
     private gameState: GamePhase = GamePhase.Lobby;
     private players = new Map<Player, PlayerData>();
-    private gameLoop?: RBXScriptConnection;
 
     constructor() {
         // Initialize game service
@@ -49,27 +47,5 @@ export class GameService implements OnStart {
         if (this.gameState === GamePhase.Playing) {
             // Handle player removal in the context of the game
         }
-
-        if (this.players.size() < GameConfig.MIN_PLAYERS && this.gameState !== GamePhase.Lobby) {
-            this.endGame(undefined);
-        }
-    }
-
-    private startGameLoop() {
-        this.gameLoop = RunService.Heartbeat.Connect(() => {
-            if (this.gameState === GamePhase.Playing) {
-                // this.updateTimer();
-            }
-        });
-    }
-
-    private endRound() {
-        this.gameState = GamePhase.Results;
-        // Handle round end logic
-    }
-
-    private endGame(winner: Player | undefined) {
-        this.gameState = GamePhase.Results;
-        // Handle game end
     }
 }

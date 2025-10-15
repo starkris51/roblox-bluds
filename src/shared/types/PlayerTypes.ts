@@ -8,7 +8,6 @@ export interface PlayerData {
     money: number;
     needs: PlayerNeeds;
     inventory: Item[];
-    // lastKnownPosition?: Vector3;
 }
 
 export interface Item {
