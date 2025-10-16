@@ -7,12 +7,6 @@ export interface PlayerData {
     hunter?: Player;
     money: number;
     needs: PlayerNeeds;
-    inventory: Item[];
-}
-
-export interface Item {
-    name: string;
-    description: string;
 }
 
 export interface PlayerNeeds {
