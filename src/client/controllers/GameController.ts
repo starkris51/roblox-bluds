@@ -1,10 +1,9 @@
 import { Controller, OnStart } from "@flamework/core";
-import { ViewmodelController } from "./ViewmodelController";
 import { UserInputService } from "@rbxts/services";
 
 @Controller()
 export class GameController implements OnStart {
-	constructor(private viewmodelController: ViewmodelController) {}
+	constructor() {}
 
 	onStart() {
 		print("client GameController started");
