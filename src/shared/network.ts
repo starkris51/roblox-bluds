@@ -1,8 +1,14 @@
 import { Networking } from "@flamework/networking";
 
-interface ClientToServerEvents {}
+interface ClientToServerEvents {
+	equipItem: (itemId: string) => void;
+	unequipItem: () => void;
+}
 
-interface ServerToClientEvents {}
+interface ServerToClientEvents {
+	playerEquippedItem: (player: Player, itemId: string) => void;
+	playerUnequippedItem: (player: Player) => void;
+}
 
 interface ClientToServerFunctions {}
 

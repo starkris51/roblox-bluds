@@ -1,5 +1,12 @@
-export interface InventoryItem {
-	id: string;
-	name: string;
-	data?: Record<string, unknown>;
+export interface InventorySlot {
+	itemId: string | undefined;
+	quantity: number;
+	slotIndex: number;
+}
+
+export interface Inventory {
+	slots: InventorySlot[];
+	maxSlots: number;
+	weightLimit: number;
+	currentWeight: number;
 }
