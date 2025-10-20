@@ -42,41 +42,8 @@ export class InventoryService implements OnStart {
 
 		const remaining = quantity;
 
-		// for (const slot of inventory.slots) {
-		// 	if (slot.item?.id === itemId && remaining > 0) {
-		// 		const toRemove = math.min(remaining, slot.quantity);
-		// 		slot.quantity -= toRemove;
-		// 		inventory.currentWeight -= slot.item.weight * toRemove;
-		// 		remaining -= toRemove;
-
-		// 		if (slot.quantity <= 0) {
-		// 			slot.item = undefined;
-		// 			slot.quantity = 0;
-		// 		}
-		// 	}
-		// }
-
 		return remaining <= 0;
 	}
-
-	// useItem(player: Player, slotIndex: number): boolean {
-	// 	const inventory = this.inventories.get(player);
-	// 	if (!inventory) return false;
-
-	// 	const slot = inventory.slots[slotIndex];
-	// 	if (!slot?.item) return false;
-
-	// 	const success = slot.item.use(player);
-
-	// 	if (success) {
-	// 		// Remove consumable items after use
-	// 		if (slot.item.type === "Consumable") {
-	// 			this.removeItem(player, slot.item.id, 1);
-	// 		}
-	// 	}
-
-	// 	return success;
-	// }
 
 	getInventory(player: Player): Inventory | undefined {
 		return this.inventories.get(player);
