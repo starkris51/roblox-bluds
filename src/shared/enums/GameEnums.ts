@@ -1,5 +1,5 @@
 export enum GamePhase {
-	Lobby = "Lobby",
+	NotStarted = "Not Started",
 	Starting = "Starting",
 	Playing = "Playing",
 	Results = "Results",
