@@ -1,22 +1,18 @@
-import { Service, OnStart } from "@flamework/core";
-import { Inventory, InventorySlot } from "shared/types/InventoryTypes";
+import { Service } from "@flamework/core";
+import { Inventory, InventorySlot } from "shared/types/Inventory";
 
 @Service()
-export class InventoryService implements OnStart {
-	private inventories = new Map<Player, Inventory>();
+export class InventoryService {
+	private inventories = new Map<number, Inventory>();
 
-	private readonly DEFAULT_INVENTORY_SIZE = 20;
-	private readonly DEFAULT_WEIGHT_LIMIT = 100;
+	private DEFAULT_INVENTORY_SIZE = 20;
+	private DEFAULT_WEIGHT_LIMIT = 100;
 
-	onStart() {
-		print("server InventoryService started");
+	removeInventory(userId: number): void {
+		this.inventories.delete(userId);
 	}
 
-	public removeInventory(player: Player): void {
-		this.inventories.delete(player);
-	}
-
-	public createInventory(player: Player): void {
+	createInventory(userId: number): void {
 		const slots: InventorySlot[] = [];
 
 		// Initialize empty slots
@@ -28,7 +24,7 @@ export class InventoryService implements OnStart {
 			});
 		}
 
-		this.inventories.set(player, {
+		this.inventories.set(userId, {
 			slots: slots,
 			maxSlots: this.DEFAULT_INVENTORY_SIZE,
 			weightLimit: this.DEFAULT_WEIGHT_LIMIT,
@@ -36,8 +32,8 @@ export class InventoryService implements OnStart {
 		});
 	}
 
-	removeItem(player: Player, itemId: string, quantity: number = 1): boolean {
-		const inventory = this.inventories.get(player);
+	removeItem(userId: number, itemId: string, quantity: number = 1): boolean {
+		const inventory = this.inventories.get(userId);
 		if (!inventory) return false;
 
 		const remaining = quantity;
@@ -45,12 +41,12 @@ export class InventoryService implements OnStart {
 		return remaining <= 0;
 	}
 
-	getInventory(player: Player): Inventory | undefined {
-		return this.inventories.get(player);
+	getInventory(userId: number): Inventory | undefined {
+		return this.inventories.get(userId);
 	}
 
-	moveItem(player: Player, fromSlot: number, toSlot: number): boolean {
-		const inventory = this.inventories.get(player);
+	moveItem(userId: number, fromSlot: number, toSlot: number): boolean {
+		const inventory = this.inventories.get(userId);
 		if (!inventory) return false;
 
 		if (fromSlot < 0 || fromSlot >= inventory.slots.size() || toSlot < 0 || toSlot >= inventory.slots.size()) {

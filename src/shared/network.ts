@@ -3,6 +3,9 @@ import { Networking } from "@flamework/networking";
 interface ClientToServerEvents {
 	equipItem: (itemId: string) => void;
 	unequipItem: () => void;
+	useItem: () => void;
+	interact: (target: Instance) => void;
+	purchaseItem: (shopId: string, itemId: string) => void;
 }
 
 interface ServerToClientEvents {
