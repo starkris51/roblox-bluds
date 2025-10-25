@@ -1,7 +1,8 @@
 export interface PlayerData {
 	id: number;
 	name: string;
-	target: Target | undefined;
+	target?: Target;
+	killer?: Killer;
 	money: number;
 	isJailed: boolean;
 	needs: Needs;
@@ -24,4 +25,9 @@ export interface Target {
 	room: string;
 	isAlive: boolean;
 	isJailed: boolean;
+}
+
+export interface Killer {
+	id: number;
+	name: string;
 }

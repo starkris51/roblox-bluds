@@ -5,7 +5,7 @@ import { PlayerData } from "shared/types/Player";
 
 @Service()
 export class PlayerService {
-	private players: Map<number, PlayerData | undefined> = new Map();
+	private players: Map<number, PlayerData> = new Map();
 
 	public updatePlayerData(userId: number, data: PlayerData): void {
 		this.players.set(userId, data);
