@@ -3,10 +3,8 @@ import { UserInputService } from "@rbxts/services";
 
 @Controller()
 export class GameController implements OnStart {
-	constructor() {}
-
 	onStart() {
-		print("client GameController started");
+		print("game controller start");
 
 		UserInputService.InputBegan.Connect((input) => {
 			if (input.KeyCode === Enum.KeyCode.E) {

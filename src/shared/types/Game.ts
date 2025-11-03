@@ -7,5 +7,4 @@ export interface GameState {
 
 export interface VotingResults {
 	votes: Map<Player, Player | "skip">;
-	ejectedPlayer?: Player;
 }

@@ -1,5 +1,5 @@
 {
-	"name": "flamework-game",
+	"name": "Lapskaus",
 	"globIgnorePaths": [
 		"**/package.json",
 		"**/tsconfig.json"

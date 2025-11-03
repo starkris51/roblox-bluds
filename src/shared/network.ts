@@ -1,16 +1,11 @@
 import { Networking } from "@flamework/networking";
 
 interface ClientToServerEvents {
-	equipItem: (itemId: string) => void;
-	unequipItem: () => void;
-	useItem: () => void;
-	interact: (target: Instance) => void;
-	purchaseItem: (shopId: string, itemId: string) => void;
+	fireWeapon: (origin: Vector3, direction: Vector3, cameraCF: CFrame, timestamp: number) => void;
 }
 
 interface ServerToClientEvents {
-	playerEquippedItem: (player: Player, itemId: string) => void;
-	playerUnequippedItem: (player: Player) => void;
+	weaponFired: (shooter: Player, origin: Vector3, hitPosition: Vector3, hitPartName: string | undefined) => void;
 }
 
 interface ClientToServerFunctions {}

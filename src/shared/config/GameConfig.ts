@@ -1,10 +1,5 @@
-import { PlayerData } from "shared/types/Player";
-
 export const GameConfig = {
-	MIN_PLAYERS: 4,
+	MIN_PLAYERS: 1,
 	MAX_PLAYERS: 10,
-	VOTING_TIME: 30, // seconds
 	ROUND_TIME: 300, // 5 minutes
-
-	STARTING_MONEY: 500,
 };

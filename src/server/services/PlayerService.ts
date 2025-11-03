@@ -1,6 +1,4 @@
 import { Service } from "@flamework/core";
-import { generateRandomName } from "server/utils/playerAssign";
-import { GameConfig } from "shared/config/GameConfig";
 import { PlayerData } from "shared/types/Player";
 
 @Service()
@@ -24,18 +22,9 @@ export class PlayerService {
 	public initPlayerData(userId: number): void {
 		const defaultData: PlayerData = {
 			id: userId,
-			name: generateRandomName(),
-			target: undefined,
-			money: GameConfig.STARTING_MONEY,
-			isJailed: false,
-			needs: {
-				hunger: 100,
-				thirst: 100,
-				energy: 100,
-				hygiene: 100,
-				fun: 100,
-				social: 100,
-			},
+			kills: 0,
+			deaths: 0,
+			headshots: 0,
 		};
 		this.players.set(userId, defaultData);
 	}

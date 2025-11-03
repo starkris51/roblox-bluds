@@ -1,11 +1,11 @@
-# The Bluds (WIP)
+# Lapskaus (WIP)
 A Roblox Game 
 
 ![Thumbnail](The_Bluds.jpg)
 
 ## Description
 
-Roblox game based on The Ship (2006) created with roblox-ts
+Roblox game based on Cube 2 sauerbraten insta gamemodes
 
 ## Tools
 
