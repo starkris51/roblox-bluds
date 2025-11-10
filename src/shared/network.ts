@@ -1,14 +1,14 @@
 import { Networking } from "@flamework/networking";
 
-interface ClientToServerEvents {
-	fireWeapon: (origin: Vector3, direction: Vector3, cameraCF: CFrame, timestamp: number) => void;
-}
+interface ClientToServerEvents {}
 
 interface ServerToClientEvents {
-	weaponFired: (shooter: Player, origin: Vector3, hitPosition: Vector3, hitPartName: string | undefined) => void;
+	notifyPlayerKilled(killerId: number, victimId: number, isHeadshot: boolean): void;
 }
 
-interface ClientToServerFunctions {}
+interface ClientToServerFunctions {
+	requestFire(cameraCFrame: CFrame): boolean;
+}
 
 interface ServerToClientFunctions {}
 

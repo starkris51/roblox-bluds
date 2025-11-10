@@ -15,3 +15,9 @@ export enum Gamemodes {
 	CaptureTheLapskaus = "CaptureTheLapskaus",
 	FreeForAll = "FreeForAll",
 }
+
+export enum Teams {
+	Red = 1,
+	Blue = 2,
+	Spectator = 3,
+}

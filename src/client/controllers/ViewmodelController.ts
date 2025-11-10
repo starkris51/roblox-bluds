@@ -1,5 +1,5 @@
-import { Controller, OnRender, OnStart } from "@flamework/core";
-import { Players, ReplicatedStorage, UserInputService, Workspace } from "@rbxts/services";
+import { Controller, OnStart } from "@flamework/core";
+import { Players, Workspace } from "@rbxts/services";
 
 @Controller()
 export class ViewmodelController implements OnStart {
@@ -7,7 +7,6 @@ export class ViewmodelController implements OnStart {
 	private player = Players.LocalPlayer;
 
 	onStart() {
-		this.player.CameraMode = Enum.CameraMode.LockFirstPerson;
-		this.camera.FieldOfView = 70;
+		// this.player.CameraMode = Enum.CameraMode.LockFirstPerson;
 	}
 }

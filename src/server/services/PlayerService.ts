@@ -1,4 +1,5 @@
 import { Service } from "@flamework/core";
+import { Teams } from "shared/enums/GameEnums";
 import { PlayerData } from "shared/types/Player";
 
 @Service()
@@ -14,18 +15,33 @@ export class PlayerService {
 	}
 
 	public removePlayerData(userId: number): void {
-		if (this.players.has(userId)) {
-			this.players.delete(userId);
+		this.players.delete(userId);
+	}
+
+	public recordPlayerKill(killerId: number, victimId: number, isHeadshot: boolean): void {
+		const killerData = this.players.get(killerId);
+		const victimData = this.players.get(victimId);
+		if (killerData && victimData) {
+			killerData.kills.set(victimId, (killerData.kills.get(victimId) ?? 0) + 1);
+			victimData.deaths.set(killerId, (victimData.deaths.get(killerId) ?? 0) + 1);
+			if (isHeadshot) {
+				killerData.headshots += 1;
+			}
 		}
 	}
+
+	public assignTeamsToPlayers(): void {}
 
 	public initPlayerData(userId: number): void {
 		const defaultData: PlayerData = {
 			id: userId,
-			kills: 0,
-			deaths: 0,
+			kills: new Map<number, number>(),
+			deaths: new Map<number, number>(),
 			headshots: 0,
+			team: Teams.Spectator,
 		};
 		this.players.set(userId, defaultData);
 	}
+
+	public assignTeams(): void {}
 }
