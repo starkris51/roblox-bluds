@@ -1,15 +1,10 @@
 import { OnStart, Service } from "@flamework/core";
-import { PlayerService } from "./PlayerService";
 import { CollectionService, Workspace } from "@rbxts/services";
 import { Teams } from "shared/enums/GameEnums";
 
 @Service()
-export class RespawnService implements OnStart {
+export class RespawnService {
 	private teamSpawnPoints: Map<Teams, Instance[]> = new Map();
-
-	constructor(private playerService: PlayerService) {}
-
-	onStart() {}
 
 	public setupSpawnPoints(): void {
 		const blueTeamSpawns = CollectionService.GetTagged("BlueTeamSpawn");

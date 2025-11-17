@@ -45,6 +45,12 @@ export class WeaponService implements OnStart {
 		rayPart.BrickColor = new BrickColor("Bright yellow");
 		rayPart.Parent = Workspace;
 
+		// remove the ray part after a short delay
+		coroutine.wrap(() => {
+			task.wait(1);
+			rayPart.Destroy();
+		})();
+
 		if (rayResult) {
 			const hitPart = rayResult.Instance;
 			const hitPlayer = Players.GetPlayerFromCharacter(hitPart.Parent as Model);

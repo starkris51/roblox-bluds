@@ -1,16 +1,17 @@
 import { Service, OnStart } from "@flamework/core";
 import { Players, Workspace } from "@rbxts/services";
 import { PlayerService } from "./PlayerService";
-import { GamePhase } from "shared/enums/GameEnums";
+import { GamePhase, Teams } from "shared/enums/GameEnums";
 import { GameConfig } from "shared/config/GameConfig";
+import { RespawnService } from "./RespawnService";
 @Service()
 export class GameService implements OnStart {
 	private gamePhase: GamePhase = GamePhase.NotStarted;
 
-	constructor(private playerService: PlayerService) {}
+	constructor(private playerService: PlayerService, private respawnService: RespawnService) {}
 
 	onStart() {
-		Players.CharacterAutoLoads = true;
+		Players.CharacterAutoLoads = false;
 
 		try {
 			// Set up services on players
@@ -30,9 +31,21 @@ export class GameService implements OnStart {
 	}
 
 	startGame(): void {
+		this.respawnService.setupSpawnPoints();
+
 		for (const player of Players.GetPlayers()) {
 			this.playerService.initPlayerData(player.UserId);
 		}
+
+		for (const playerData of this.playerService.getAllPlayerData()) {
+			const player = Players.GetPlayerByUserId(playerData[0]);
+			if (!player) continue;
+			player.LoadCharacter();
+			const character = player.Character || player.CharacterAdded.Wait()[0];
+			this.respawnService.placeAtSpawn(character, playerData[1].team);
+		}
+
+		this.playerService.assignTeamsToPlayers();
 
 		this.gamePhase = GamePhase.Playing;
 		print("Game started");

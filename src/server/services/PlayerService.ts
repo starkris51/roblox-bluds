@@ -10,6 +10,10 @@ export class PlayerService {
 		this.players.set(userId, data);
 	}
 
+	public getAllPlayerData(): Map<number, PlayerData> {
+		return this.players;
+	}
+
 	public getPlayerData(userId: number): PlayerData | undefined {
 		return this.players.get(userId);
 	}
@@ -39,6 +43,7 @@ export class PlayerService {
 			deaths: new Map<number, number>(),
 			headshots: 0,
 			team: Teams.Spectator,
+			isReady: false,
 		};
 		this.players.set(userId, defaultData);
 	}
